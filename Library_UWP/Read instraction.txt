@@ -1,0 +1,10 @@
+﻿
+
+1. created tables by metod Entity Relation. 
+4. Crteated by Scaff old funktion  Models folder with classes-Tables and DBContext file
+5. flyttad till Library_UWP (change namn  till Library_UWP)
+
+
+6 + in  App.xaml.cs, -- 
+           
+7.

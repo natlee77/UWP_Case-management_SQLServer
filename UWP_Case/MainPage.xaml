@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="UWP_Case.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Case"
+    xmlns:db="using:Library_UWP.DB"
+    xmlns:model="using:Library_UWP.Models"
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local1="using:Library_UWP.DB"
+    mc:Ignorable="d"
+    Background="#FF541919">
+
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="OrderProductCollection" Source="{x:Bind orderProductviewModel.OrderProducts}" />
+    </Page.Resources>
+
+
+    <Grid Margin="10" Background="#FFB9ACAC">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10" Grid.Column="0"  Background="#FFD1BE95">
+            <Button x:Name="btnAdd"       Click="btnAdd_Click"   Content="Add New Order" Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch"  FontSize="22" Background="#33936969"/>
+            <Button x:Name="btnAllOrders" Click="btnAllOrders_Click"  Content="All Orders"  Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22" Background="#33936969"/>
+            <Button x:Name="btnCompletedOrder" Click="btnCompletedOrder_Click"   Content="Completed Order"  Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22" Background="#33936969" />
+        </StackPanel>
+        
+        <Grid Grid.Column="1" Margin="10"   Background="#FFEBEBD5">
+
+            <Grid.RowDefinitions>                
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />               
+            </Grid.RowDefinitions>  
+   
+            <RelativePanel>
+                <ListView Name="InventoryList"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal"  >
+                                <TextBlock Text="ID" Margin="8,0" Width="50" TextAlignment="Center"  Foreground="DarkRed" />
+                                <TextBlock Text="StatusDescript" Width="300" TextAlignment="Center"   Foreground="DarkRed" />                                
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+                    <ListView x:Name="OrderProductListView" ItemsSource="{Binding Source={StaticResource OrderProductCollection}}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="db:OrderProduct"  >
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <TextBlock Name="OrderID"     Text="{x:Bind OrderId }"   Width="30" />
+                                    <TextBlock Name="OrderStatus" Text="{x:Bind OrderStatusId }"  Width="300" />
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ListView>
+            </RelativePanel>
+
+        </Grid>
+
+
+
+
+        <!--<GridView  Grid.Column="1" Grid.Row="1" x:Name="PersonsListView" ItemsSource="{Binding Source={StaticResource PersonCollection}} Margin="0,0,0,0">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderThickness="1" BorderBrush="Gray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right">Id:</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right">First Name:</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right">Last Name:</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right">Adress:</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right" >City:</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Right">PostCode:</TextBlock>
+
+                        <TextBlock Grid.Column="1" Grid.Row="0" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding }"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding }"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding }"/>
+                        <TextBlock Grid.Column="1" Grid.Row="3" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding }"/>
+                        <TextBlock Grid.Column="1" Grid.Row="4" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding }"/>
+                        <TextBlock Grid.Column="1" Grid.Row="5" FontSize="24" TextWrapping="Wrap" Margin="10" HorizontalAlignment="Left" Text="{Binding  }"/>
+                            
+                    </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+    </GridView>-->
+    </Grid>
+
+
+</Page>
+
+
+<!--<ListView Margin="10,50,10,10" >  1
+    <StackPanel >
+        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="10,5,5,5"  FontSize="16"/>
+
+        <StackPanel>
+            <StackPanel.DataContext>
+                <db:OrderProduct OrderId ="{Binding OrderId }" OrderStatus="{Binding OrderStatus }"    />
+            </StackPanel.DataContext>
+            <TextBlock Text="{Binding  }" />
+        </StackPanel>
+
+
+        <TextBlock  />
+    </StackPanel>
+</ListView>-->
