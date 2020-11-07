@@ -130,25 +130,22 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataAccess.cs" />
-    <Compile Include="FileHelper.cs" />
-    <Compile Include="JsonService.cs" />
-    <Compile Include="Models\DBContext.cs" />
-    <Compile Include="DB\Order.cs" />
-    <Compile Include="DB\OrderProduct.cs" />
-    <Compile Include="DB\OrderStatus.cs" />
-    <Compile Include="DB\Person.cs" />
-    <Compile Include="DB\Product.cs" />
-    <Compile Include="DB\StatusDescript.cs" />
-    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Data\DataAccess.cs" />
+    <Compile Include="Data\FileHelper.cs" />
+    <Compile Include="Data\JsonService.cs" />
+    <Compile Include="Data\DBContext.cs" />
+    <Compile Include="DB_models\Order.cs" />
+    <Compile Include="DB_models\OrderProduct.cs" />
+    <Compile Include="DB_models\OrderStatus.cs" />
+    <Compile Include="DB_models\Person.cs" />
+    <Compile Include="DB_models\Product.cs" />
+    <Compile Include="DB_models\StatusDescript.cs" />
+    <Compile Include="Data\ViewModel.cs" />
     <Compile Include="Model\Person_g.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Library_UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core">
-      <Version>5.0.0-rc.2.20475.6</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>3.1.9</Version>
     </PackageReference>
@@ -163,15 +160,11 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
-    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
-      <Version>2.0.4</Version>
-    </PackageReference>
     <PackageReference Include="System.Data.SqlClient">
       <Version>4.8.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Read instraction.txt" />
     <Content Include="SQLQuery1.sql" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

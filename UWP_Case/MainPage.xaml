@@ -13,7 +13,7 @@
 
 
     <Page.Resources>
-        <CollectionViewSource x:Name="OrderProductCollection" Source="{x:Bind orderProductviewModel.OrderProducts}" />
+        <CollectionViewSource x:Name="OrderProductCollection" Source="{x:Bind orderProductViewModel.OrderProducts}" />
     </Page.Resources>
 
 
@@ -57,7 +57,7 @@
                         </DataTemplate>
                     </ListView.HeaderTemplate>
 
-                    <ListView x:Name="OrderProductListView" ItemsSource="{Binding Source={StaticResource OrderProductCollection}}">
+                    <!--<ListView x:Name="OrderProductListView" ItemsSource="{Binding Source={StaticResource OrderProductCollection}}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="db:OrderProduct"  >
 
@@ -68,16 +68,9 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
-                </ListView>
-            </RelativePanel>
+                    </ListView>-->
 
-        </Grid>
-
-
-
-
-        <!--<GridView  Grid.Column="1" Grid.Row="1" x:Name="PersonsListView" ItemsSource="{Binding Source={StaticResource PersonCollection}} Margin="0,0,0,0">
+                    <!--<GridView  Grid.Column="1" Grid.Row="1" x:Name="PersonsListView" ItemsSource="{Binding Source={StaticResource PersonCollection}} Margin="0,0,0,0">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <Grid BorderThickness="1" BorderBrush="Gray">
@@ -109,24 +102,28 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
     </GridView>-->
+
+
+                    <ListView  Margin="10,50,10,10" >
+                       <StackPanel >
+                         <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="10,5,5,5"  FontSize="16"/>
+
+                           <StackPanel>
+                               <StackPanel.DataContext>
+                               <db:OrderProduct OrderId ="{Binding OrderId}" OrderStatus="{Binding OrderStatus}"/>
+                                </StackPanel.DataContext>
+                                <TextBlock Text="{Binding  }" />
+                            </StackPanel>                         
+                           
+                       </StackPanel>
+                    </ListView>
+                    
+                    
+                </ListView>
+            </RelativePanel>
+
+        </Grid>       
     </Grid>
-
-
 </Page>
 
 
-<!--<ListView Margin="10,50,10,10" >  1
-    <StackPanel >
-        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="10,5,5,5"  FontSize="16"/>
-
-        <StackPanel>
-            <StackPanel.DataContext>
-                <db:OrderProduct OrderId ="{Binding OrderId }" OrderStatus="{Binding OrderStatus }"    />
-            </StackPanel.DataContext>
-            <TextBlock Text="{Binding  }" />
-        </StackPanel>
-
-
-        <TextBlock  />
-    </StackPanel>
-</ListView>-->

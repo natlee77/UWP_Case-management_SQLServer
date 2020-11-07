@@ -14,9 +14,6 @@ namespace Library_UWP.Models
     {
 
 
-        //private static readonly string _dbname = "SQLitedb.db";
-      // private static readonly string _dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, _dbname);//effectivizera  sök vägen
-
         public DBContext()  
         {
            // Database.EnsureCreated();  //generera DB som already exist from file .db
